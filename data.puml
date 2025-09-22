@@ -1,0 +1,23 @@
+@startuml
+class com.romnan.chillax.data.source.AppDataSource {
++ List<Sound> sounds
++ List<Mood> presetMoods
++ List<Category> categories
++ Set<String> moodImageUris
++ void null()
+}
+
+
+enum com.romnan.chillax.data.source.MoodData {
++ String id
+}
+
+enum com.romnan.chillax.data.source.CategoryData {
++ String id
+}
+
+enum com.romnan.chillax.data.source.SoundData {
++ String id
+}
+
+@enduml

@@ -1,0 +1,1711 @@
+@startuml
+class com.romnan.chillax.di.AppModule_ProvideMoodRepositoryFactory {
+- Provider<Context> appContextProvider
+- Provider<CoroutineScope> appScopeProvider
+- Provider<AppDataSource> appDataSourceProvider
++ MoodRepository get()
++ {static} AppModule_ProvideMoodRepositoryFactory create(Provider<Context>,Provider<CoroutineScope>,Provider<AppDataSource>)
++ {static} MoodRepository provideMoodRepository(Context,CoroutineScope,AppDataSource)
+}
+
+
+class com.romnan.chillax.domain.model.Sound {
+}
+class com.romnan.chillax.domain.model.AppSettings {
+}
+class com.romnan.chillax.domain.model.Mood$Companion {
++  CUSTOM_MOOD_ID_PREFIX
+}
+
+class com.romnan.chillax.domain.model.Mood {
++ Boolean isCustom
+}
+
+interface com.romnan.chillax.presentation.MainActivity_GeneratedInjector {
+~ void injectMainActivity(MainActivity)
+}
+
+class com.romnan.chillax.application.ChillaxApp_ComponentTreeDeps {
+}
+class com.romnan.chillax.presentation.composable.NavGraph {
++ Map<String, Destination> destinationsByRoute
+}
+
+class dagger.hilt.internal.processedrootsentinel.codegen._com_romnan_chillax_application_ChillaxApp {
+}
+interface com.romnan.chillax.domain.repository.PlayerRepository {
++ Flow<List<Sound>> sounds
++ Flow<List<Category>> categories
++ Flow<Player> player
++ void playOrPausePlayer()
++ void addOrRemoveSound(void,String,void)
++ void removeAllSounds()
++ void changeSoundVolume(void,String,void,Float,void)
++ void addMood(void,Mood,void,Boolean,void)
++ void setSleepTimer(void,Int,void,Int,void)
++ void stopSleepTimer()
++ void pausePlayer()
+}
+
+
+interface com.romnan.chillax.domain.repository.AppSettingsRepository {
++ Flow<AppSettings> appSettings
++ void setThemeMode(ThemeMode)
++ void setBedtime(Long?)
+}
+
+
+interface com.romnan.chillax.application.ChillaxApp_GeneratedInjector {
+~ void injectChillaxApp(ChillaxApp)
+}
+
+class com.romnan.chillax.data.serializer.PlayerSerializer {
++ PlayerSerializable defaultValue
++ PlayerSerializable readFrom(InputStream)
++ void writeTo(PlayerSerializable,OutputStream)
+}
+
+
+class com.romnan.chillax.data.serializer.SleepTimerSerializer {
++ SleepTimerSerializable defaultValue
++ SleepTimerSerializable readFrom(InputStream)
++ void writeTo(SleepTimerSerializable,OutputStream)
+}
+
+
+class com.romnan.chillax.data.model.PlayerSerializable {
+}
+class com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver_MembersInjector {
+- Provider<NotificationHelper> notificationHelperProvider
++ {static} MembersInjector<BedtimeBroadcastReceiver> create(Provider<NotificationHelper>)
++ void injectMembers(BedtimeBroadcastReceiver)
++ {static} void injectNotificationHelper(BedtimeBroadcastReceiver,NotificationHelper)
+}
+
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel {
++ StateFlow<List<CategoryPresentation>> categories
+- Job? onClickSoundJob
++ void null()
++ void onClickSound(String)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_moods_MoodsViewModel_HiltModules_BindsModule {
+}
+interface com.romnan.chillax.presentation.MainActivity_GeneratedInjector {
+~ void injectMainActivity(MainActivity)
+}
+
+class com.romnan.chillax.presentation.MainActivity {
+- MainViewModel viewModel
+- MoodsViewModel moodsViewModel
+- SoundsViewModel soundsViewModel
+- SettingsViewModel settingsViewModel
++ void onCreate(Bundle?)
+}
+
+
+class com.romnan.chillax.application.ChillaxApp_HiltComponents {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceCBuilderModule {
+~ ServiceComponentBuilder bind(ServiceC.Builder)
+}
+
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedCBuilderModule {
+~ ActivityRetainedComponentBuilder bind(ActivityRetainedC.Builder)
+}
+
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityCBuilderModule {
+~ ActivityComponentBuilder bind(ActivityC.Builder)
+}
+
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelCBuilderModule {
+~ ViewModelComponentBuilder bind(ViewModelC.Builder)
+}
+
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewCBuilderModule {
+~ ViewComponentBuilder bind(ViewC.Builder)
+}
+
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentCBuilderModule {
+~ FragmentComponentBuilder bind(FragmentC.Builder)
+}
+
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentCBuilderModule {
+~ ViewWithFragmentComponentBuilder bind(ViewWithFragmentC.Builder)
+}
+
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC {
+}
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC$Builder {
+}
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC$Builder {
+}
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC$Builder {
+}
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC$Builder {
+}
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC$Builder {
+}
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC$Builder {
+}
+abstract class com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC {
+}
+interface com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC$Builder {
+}
+class com.romnan.chillax.data.model.CustomMoodSerializable {
+}
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} SettingsViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} SettingsViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+class dagger.hilt.internal.aggregatedroot.codegen._com_romnan_chillax_application_ChillaxApp {
+}
+class com.romnan.chillax.domain.constant.PlayerConstants {
++  MAX_SOUNDS
++  DEFAULT_SOUND_VOLUME
+}
+
+class com.romnan.chillax.presentation.composable.NavGraph {
++ Map<String, Destination> destinationsByRoute
+}
+
+abstract class com.romnan.chillax.data.receiver.Hilt_BedtimeBroadcastReceiver {
+- boolean injected
+- Object injectedLock
++ void onReceive(Context,Intent)
+# void inject(Context)
+}
+
+
+class com.romnan.chillax.presentation.composable.destinations.SettingsScreenDestination {
++ String baseRoute
++ String route
++ Direction invoke()
++ void Content()
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_service_PlayerService_GeneratedInjector {
+}
+enum com.romnan.chillax.domain.model.PlayerPhase {
+}
+class com.romnan.chillax.BuildConfig {
++ {static} boolean DEBUG
++ {static} String APPLICATION_ID
++ {static} String BUILD_TYPE
++ {static} int VERSION_CODE
++ {static} String VERSION_NAME
+}
+
+class com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory {
++ CoroutineScope get()
++ {static} AppModule_ProvideApplicationScopeFactory create()
++ {static} CoroutineScope provideApplicationScope()
+}
+
+class com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory$InstanceHolder {
+- {static} AppModule_ProvideApplicationScopeFactory INSTANCE
+}
+
+class com.romnan.chillax.data.serializer.CustomMoodsSerializer {
++ CustomMoodList defaultValue
++ CustomMoodList readFrom(void,InputStream,void)
++ void writeTo(void,CustomMoodList,void,OutputStream,void)
+}
+
+
+class com.romnan.chillax.di.AppModule {
++ CoroutineScope provideApplicationScope()
++ void provideAppDataSource(void)
++ void providePlayerRepository(void)
++ void provideAppSettingsRepository(void)
++ void provideMoodRepository(void)
++ void provideNotificationHelper(void)
++ void provideSleepTimerRepository(void)
++ void provideCountDownTimer(void)
++ TimeSource provideTimeSource()
+}
+
+class com.romnan.chillax.di.ApplicationScope {
+}
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(SoundsViewModel)
+}
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+interface com.romnan.chillax.presentation.service.PlayerService_GeneratedInjector {
+~ void injectPlayerService(PlayerService)
+}
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_sounds_SoundsViewModel_HiltModules_BindsModule {
+}
+class com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory {
++ TimeSource get()
++ {static} AppModule_ProvideTimeSourceFactory create()
++ {static} TimeSource provideTimeSource()
+}
+
+class com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory$InstanceHolder {
+- {static} AppModule_ProvideTimeSourceFactory INSTANCE
+}
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel {
+-  selectedMoodType
+-  player
+-  moods
+-  customMoodToDelete
+-  moodTypes
++ StateFlow<MoodsState> state
+- Job? onClickConfirmDeleteMoodJob
+- Job? onClickPlayOrPauseJob
++ void null()
++ void null()
++ void onClickDeleteMood(Mood)
++ void onDismissDeleteMoodDialog()
++ void onClickConfirmDeleteMood(Mood)
++ void onClickPlayOrPause(Mood)
++ void onSelectMoodType(MoodType)
+}
+
+
+class com.romnan.chillax.data.model.CustomMoodList {
+}
+class com.romnan.chillax.presentation.notification.NotificationConstants {
++  PLAYER_SERVICE_CHANNEL_ID
++  PLAYER_SERVICE_NOTIFICATION_ID
++  BEDTIME_REMINDER_CHANNEL_ID
++  BEDTIME_NOTIFICATION_ID
+}
+
+class com.romnan.chillax.presentation.constant.TimeConstants {
++  TWELVE_HOUR_FORMAT
++ Calendar DEFAULT_BED_TIME
+}
+
+interface com.romnan.chillax.domain.repository.SleepTimerRepository {
++ Flow<SleepTimer> sleepTimer
++ void updateTimerRunning(void,Boolean,void)
++ void updateTimeLeftInMillis(void,Long,void)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_MainActivity_GeneratedInjector {
+}
+class com.romnan.chillax.presentation.composable.NavGraphs {
++ NavGraph root
+}
+
+interface com.romnan.chillax.domain.repository.MoodRepository {
++ Flow<List<Mood>> moods
++ Flow<Set<String>> moodPresetImageUris
++ Flow<Set<String>> moodCustomImageUris
++ Mood? saveCustomMood(void,String,void,String,void,Map<String, Float>,void)
++ void deleteCustomMood(String)
++ Uri saveMoodCustomImage(Uri)
++ void deleteMoodCustomImage(String)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_settings_SettingsViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory {
++ TimeSource get()
++ {static} AppModule_ProvideTimeSourceFactory create()
++ {static} TimeSource provideTimeSource()
+}
+
+class com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory$InstanceHolder {
+- {static} AppModule_ProvideTimeSourceFactory INSTANCE
+}
+
+class hilt_aggregated_deps._com_romnan_chillax_data_receiver_BedtimeBroadcastReceiver_GeneratedInjector {
+}
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_Factory {
+- Provider<AppSettingsRepository> appSettingsRepositoryProvider
++ SettingsViewModel get()
++ {static} SettingsViewModel_Factory create(Provider<AppSettingsRepository>)
++ {static} SettingsViewModel newInstance(AppSettingsRepository)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_settings_SettingsViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.presentation.model.SleepTimerPresentation$Companion {
++  defaultValue
+}
+
+class com.romnan.chillax.presentation.model.SleepTimerPresentation {
++ Boolean isEnabled
++ UIText readableTimeLeft
++ void null()
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_application_ChillaxApp_GeneratedInjector {
+}
+class com.romnan.chillax.presentation.composable.theme.Spacing {
+}
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(MoodsViewModel)
+}
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.service.PlayerService {
+-  serviceScope
++ PlayerRepository playerRepository
++ NotificationHelper notificationHelper
+-  audioResIdToExoPlayer
+- Job? playerServiceJob
++ Int onStartCommand(Intent?,Int,Int)
++ void onDestroy()
+- void stopAllPlayers()
+- void pauseAllPlayers()
+- void playAllPlayers()
+- void addResPlayer(void)
++ void null()
+- void removeExoPlayer(Int)
++ IBinder? onBind(Intent?)
+}
+
+
+class com.romnan.chillax.domain.model.UIText$DynamicString {
+}
+class com.romnan.chillax.domain.model.UIText$StringResource {
++ Array<out Any> args
++ String toString()
+}
+
+
+class com.romnan.chillax.domain.model.UIText$PluralsResource {
++ Array<out Any> args
++ String toString()
+}
+
+
+class com.romnan.chillax.domain.model.UIText$Blank {
+}
+class com.romnan.chillax.domain.model.UIText {
+}
+class com.romnan.chillax.presentation.composable.destinations.SoundsScreenDestination {
++ String baseRoute
++ String route
++ Direction invoke()
++ void Content()
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_MainActivity_GeneratedInjector {
+}
+class com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver_MembersInjector {
+- Provider<NotificationHelper> notificationHelperProvider
++ {static} MembersInjector<BedtimeBroadcastReceiver> create(Provider<NotificationHelper>)
++ void injectMembers(BedtimeBroadcastReceiver)
++ {static} void injectNotificationHelper(BedtimeBroadcastReceiver,NotificationHelper)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_moods_MoodsViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} SoundsViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} SoundsViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+class com.romnan.chillax.test.BuildConfig {
++ {static} boolean DEBUG
++ {static} String APPLICATION_ID
++ {static} String BUILD_TYPE
+}
+
+interface com.romnan.chillax.presentation.composable.destinations.TypedDestination {
+}
+interface com.romnan.chillax.presentation.composable.destinations.DirectionDestination {
+}
+abstract class com.romnan.chillax.presentation.Hilt_MainActivity {
+- SavedStateHandleHolder savedStateHandleHolder
+- ActivityComponentManager componentManager
+- Object componentManagerLock
+- boolean injected
+- void _initHiltInternal()
+- void initSavedStateHandleHolder()
+# void onCreate(Bundle)
+# void onDestroy()
++ Object generatedComponent()
+# ActivityComponentManager createComponentManager()
++ ActivityComponentManager componentManager()
+# void inject()
++ ViewModelProvider.Factory getDefaultViewModelProviderFactory()
+}
+
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_Factory {
+- Provider<PlayerRepository> playerRepositoryProvider
+- Provider<MoodRepository> moodRepositoryProvider
++ MoodsViewModel get()
++ {static} MoodsViewModel_Factory create(Provider<PlayerRepository>,Provider<MoodRepository>)
++ {static} MoodsViewModel newInstance(PlayerRepository,MoodRepository)
+}
+
+
+class com.romnan.chillax.di.AppModule_ProvideSleepTimerRepositoryFactory {
+- Provider<Context> appContextProvider
+- Provider<CoroutineScope> appScopeProvider
++ SleepTimerRepository get()
++ {static} AppModule_ProvideSleepTimerRepositoryFactory create(Provider<Context>,Provider<CoroutineScope>)
++ {static} SleepTimerRepository provideSleepTimerRepository(Context,CoroutineScope)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_service_PlayerService_GeneratedInjector {
+}
+class com.romnan.chillax.presentation.SaveMoodDialogState {
+}
+class com.romnan.chillax.presentation.MainViewModel {
+-  _uiEvent
++  uiEvent
+-  showSaveMoodDialog
+-  moodPresetImageUris
+-  moodCustomImageUris
+-  moodCustomImageUriToDelete
++ StateFlow<SaveMoodDialogState> saveMoodDialogState
++ StateFlow<ThemeMode?> themeMode
++ StateFlow<PlayerPresentation> player
+-  _isSleepTimerPickerDialogVisible
++ StateFlow<SleepTimerPresentation> sleepTimer
+- Job? onPlayPauseClickJob
+- Job? onStopClickJob
+- Job? onSoundVolumeChangeJob
+- Job? onTimerClickJob
+- Job? onSetSleepTimerClickJob
+- Job? onConfirmSaveMoodClickJob
+- Job? onClickConfirmDeleteMoodImageJob
++ void null()
++ void null()
++ void null()
++ void onClickPlayPause()
++ void onClickStop()
++ void onChangeSoundVolume(void,String,void,Float,void)
++ void onClickTimer()
++ void onDismissSleepTimerPickerDialog()
++ void onClickSetSleepTimer(Int,Int)
++ void onClickSaveMood()
++ void onClickConfirmSaveMood(void,String,void,String?,void)
++ void onDismissSaveMoodDialog()
++ Uri onPickNewMoodCustomImage(Uri)
++ void onClickRemoveCustomImage(String)
++ void onClickConfirmDeleteMoodImage(String)
++ void onDismissDeleteMoodImageDialog()
+}
+
+
+class com.romnan.chillax.domain.model.Category {
+}
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(SettingsViewModel)
+}
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.application.ChillaxApp {
++ void onCreate()
+}
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(SoundsViewModel)
+}
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+abstract class com.romnan.chillax.application.Hilt_ChillaxApp {
+- boolean injected
+- ApplicationComponentManager componentManager
++ ApplicationComponentManager componentManager()
++ Object generatedComponent()
++ void onCreate()
+# void hiltInternalInject()
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_sounds_SoundsViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.presentation.MainViewModel_Factory {
+- Provider<PlayerRepository> playerRepositoryProvider
+- Provider<SleepTimerRepository> sleepTimerRepositoryProvider
+- Provider<AppSettingsRepository> appSettingsRepositoryProvider
+- Provider<MoodRepository> moodRepositoryProvider
++ MainViewModel get()
++ {static} MainViewModel_Factory create(Provider<PlayerRepository>,Provider<SleepTimerRepository>,Provider<AppSettingsRepository>,Provider<MoodRepository>)
++ {static} MainViewModel newInstance(PlayerRepository,SleepTimerRepository,AppSettingsRepository,MoodRepository)
+}
+
+
+class com.romnan.chillax.di.AppModule_ProvideSleepTimerRepositoryFactory {
+- Provider<Context> appContextProvider
+- Provider<CoroutineScope> appScopeProvider
++ SleepTimerRepository get()
++ {static} AppModule_ProvideSleepTimerRepositoryFactory create(Provider<Context>,Provider<CoroutineScope>)
++ {static} SleepTimerRepository provideSleepTimerRepository(Context,CoroutineScope)
+}
+
+
+class com.romnan.chillax.di.AppModule_ProvideCountDownTimerFactory {
+- Provider<CoroutineScope> appScopeProvider
+- Provider<TimeSource> timeSourceProvider
++ CountDownTimer get()
++ {static} AppModule_ProvideCountDownTimerFactory create(Provider<CoroutineScope>,Provider<TimeSource>)
++ {static} CountDownTimer provideCountDownTimer(CoroutineScope,TimeSource)
+}
+
+
+interface com.romnan.chillax.presentation.composable.destinations.TypedDestination {
+}
+interface com.romnan.chillax.presentation.composable.destinations.DirectionDestination {
+}
+class hilt_aggregated_deps._com_romnan_chillax_application_ChillaxApp_GeneratedInjector {
+}
+class com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} MainViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} MainViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+class com.romnan.chillax.presentation.model.PlayerPresentation {
++ UIText contentTitle
++ UIText soundsTitle
++ void null()
++ void null()
+}
+
+
+class com.romnan.chillax.data.repository.PlayerRepositoryImpl$Companion {
+-  FILE_NAME_PLAYER_DATA_STORE
+-  playerDataStore
+}
+
+class com.romnan.chillax.data.repository.PlayerRepositoryImpl {
+-  isPlaying
++ Flow<List<Sound>> sounds
++ Flow<List<Category>> categories
++ Flow<Player> player
++ void null()
+- void startSleepTimer()
+- void pauseSleepTimer()
++ void stopSleepTimer()
++ void pausePlayer()
++ void playOrPausePlayer()
++ void addOrRemoveSound(void,String,void)
++ void setSleepTimer(void,Int,void,Int,void)
++ void removeAllSounds()
++ void changeSoundVolume(void,String,void,Float,void)
++ void addMood(void,Mood,void,Boolean,void)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_data_receiver_BedtimeBroadcastReceiver_GeneratedInjector {
+}
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_sounds_SoundsViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.presentation.composable.moods.MoodsState {
+}
+class dagger.hilt.internal.aggregatedroot.codegen._com_romnan_chillax_application_ChillaxApp {
+}
+class hilt_aggregated_deps._com_romnan_chillax_presentation_MainViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.di.AppModule_ProvideAppSettingsRepositoryFactory {
+- Provider<Context> appContextProvider
++ AppSettingsRepository get()
++ {static} AppModule_ProvideAppSettingsRepositoryFactory create(Provider<Context>)
++ {static} AppSettingsRepository provideAppSettingsRepository(Context)
+}
+
+
+class com.romnan.chillax.presentation.composable.destinations.MoodsScreenDestination {
++ String baseRoute
++ String route
++ Direction invoke()
++ void Content()
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_sounds_SoundsViewModel_HiltModules_BindsModule {
+}
+class com.romnan.chillax.domain.model.SleepTimer {
+}
+class com.romnan.chillax.presentation.model.BedtimePresentation$Companion {
++  defaultValue
+}
+
+class com.romnan.chillax.presentation.model.BedtimePresentation {
+}
+class com.romnan.chillax.di.AppModule_ProvideAppDataSourceFactory {
+- Provider<Context> appContextProvider
++ AppDataSource get()
++ {static} AppModule_ProvideAppDataSourceFactory create(Provider<Context>)
++ {static} AppDataSource provideAppDataSource(Context)
+}
+
+
+class com.romnan.chillax.presentation.model.SoundPresentation {
+}
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(MoodsViewModel)
+}
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.MainViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.MainViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(MainViewModel)
+}
+
+class com.romnan.chillax.presentation.MainViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.data.serializer.AppSettingsSerializer {
++ AppSettingsSerializable defaultValue
++ AppSettingsSerializable readFrom(InputStream)
++ void writeTo(AppSettingsSerializable,OutputStream)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_moods_MoodsViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.di.AppModule_ProvideNotificationHelperFactory {
+- Provider<Context> appContextProvider
++ NotificationHelper get()
++ {static} AppModule_ProvideNotificationHelperFactory create(Provider<Context>)
++ {static} NotificationHelper provideNotificationHelper(Context)
+}
+
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_Factory {
+- Provider<PlayerRepository> playerRepositoryProvider
+- Provider<MoodRepository> moodRepositoryProvider
++ MoodsViewModel get()
++ {static} MoodsViewModel_Factory create(Provider<PlayerRepository>,Provider<MoodRepository>)
++ {static} MoodsViewModel newInstance(PlayerRepository,MoodRepository)
+}
+
+
+interface com.romnan.chillax.application.ChillaxApp_GeneratedInjector {
+~ void injectChillaxApp(ChillaxApp)
+}
+
+class com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver$Companion {
+-  PENDING_INTENT_REQUEST_CODE
++ PendingIntent getPendingIntent(Context)
+}
+
+
+class com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver {
++ NotificationHelper notificationHelper
++ void onReceive(Context?,Intent?)
+}
+
+
+class com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory {
++ CoroutineScope get()
++ {static} AppModule_ProvideApplicationScopeFactory create()
++ {static} CoroutineScope provideApplicationScope()
+}
+
+class com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory$InstanceHolder {
+- {static} AppModule_ProvideApplicationScopeFactory INSTANCE
+}
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} MoodsViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} MoodsViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+class com.romnan.chillax.di.AppModule_ProvideAppDataSourceFactory {
+- Provider<Context> appContextProvider
++ AppDataSource get()
++ {static} AppModule_ProvideAppDataSourceFactory create(Provider<Context>)
++ {static} AppDataSource provideAppDataSource(Context)
+}
+
+
+class dagger.hilt.internal.aggregatedroot.codegen._com_romnan_chillax_application_ChillaxApp {
+}
+enum com.romnan.chillax.domain.model.ThemeMode {
+}
+abstract class com.romnan.chillax.presentation.service.Hilt_PlayerService {
+- ServiceComponentManager componentManager
+- Object componentManagerLock
+- boolean injected
++ void onCreate()
+# ServiceComponentManager createComponentManager()
++ ServiceComponentManager componentManager()
+# void inject()
++ Object generatedComponent()
+}
+
+
+class com.romnan.chillax.presentation.composable.NavGraphs {
++ NavGraph root
+}
+
+abstract class com.romnan.chillax.presentation.service.Hilt_PlayerService {
+- ServiceComponentManager componentManager
+- Object componentManagerLock
+- boolean injected
++ void onCreate()
+# ServiceComponentManager createComponentManager()
++ ServiceComponentManager componentManager()
+# void inject()
++ Object generatedComponent()
+}
+
+
+class com.romnan.chillax.data.source.AppDataSource {
++ List<Sound> sounds
++ List<Mood> presetMoods
++ List<Category> categories
++ Set<String> moodImageUris
++ void null()
+}
+
+
+enum com.romnan.chillax.data.source.MoodData {
++ String id
+}
+
+enum com.romnan.chillax.data.source.CategoryData {
++ String id
+}
+
+enum com.romnan.chillax.data.source.SoundData {
++ String id
+}
+
+class com.romnan.chillax.presentation.constant.IntentConstants {
++  TYPE_PLAIN_TEXT
++  TYPE_EMAIL
+}
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel {
+- MutableStateFlow<Boolean> _isThemeChooserVisible
++ StateFlow<Boolean> isThemeChooserVisible
+- MutableStateFlow<Boolean> _isAppInstructionsVisible
++ StateFlow<Boolean> isAppInstructionsVisible
+-  _uiEvent
++  uiEvent
++ StateFlow<ThemeMode> themeMode
++ StateFlow<BedtimePresentation> bedtime
+-  _visiblePermissionDialogQueue
++ StateFlow<List<String>> visiblePermissionDialogQueue
+- Job? onThemeModeChangeJob
+- Job? onBedtimePickedJob
+- Job? onTurnOffBedtimeJob
+- Job? showThemeChooserJob
+- Job? hideThemeChooserJob
+- Job? showAppInstructionsJob
+- Job? hideAppInstructionsJob
+- Job? onClickAppVersionJob
++ void null()
++ void onThemeModeChange(ThemeMode)
++ void onBedtimePicked(Int,Int)
++ void onTurnOffBedtime()
++ void showThemeChooser()
++ void hideThemeChooser()
++ void showAppInstructions()
++ void hideAppInstructions()
++ void onClickAppVersion()
++ void onPermissionResults(String,Boolean)
++ void onDismissPermissionDialog()
+}
+
+
+class com.romnan.chillax.presentation.service.PlayerService_MembersInjector {
+- Provider<PlayerRepository> playerRepositoryProvider
+- Provider<NotificationHelper> notificationHelperProvider
++ {static} MembersInjector<PlayerService> create(Provider<PlayerRepository>,Provider<NotificationHelper>)
++ void injectMembers(PlayerService)
++ {static} void injectPlayerRepository(PlayerService,PlayerRepository)
++ {static} void injectNotificationHelper(PlayerService,NotificationHelper)
+}
+
+
+enum com.romnan.chillax.presentation.model.BottomBarDestination {
+}
+class com.romnan.chillax.data.repository.SleepTimerRepositoryImpl$Companion {
+-  FILE_NAME
+-  sleepTimerDataStore
+}
+
+class com.romnan.chillax.data.repository.SleepTimerRepositoryImpl {
+- DataStore<SleepTimerSerializable> sleepTimerDataStore
++ Flow<SleepTimer> sleepTimer
++ void null()
++ void updateTimerRunning(void,Boolean,void)
++ void updateTimeLeftInMillis(void,Long,void)
+}
+
+
+class com.romnan.chillax.presentation.composable.destinations.SettingsScreenDestination {
++ String baseRoute
++ String route
++ Direction invoke()
++ void Content()
+}
+
+
+interface com.romnan.chillax.application.ChillaxApp_GeneratedInjector {
+~ void injectChillaxApp(ChillaxApp)
+}
+
+interface com.romnan.chillax.presentation.service.PlayerService_GeneratedInjector {
+~ void injectPlayerService(PlayerService)
+}
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_moods_MoodsViewModel_HiltModules_BindsModule {
+}
+class com.romnan.chillax.presentation.MainViewModel_Factory {
+- Provider<PlayerRepository> playerRepositoryProvider
+- Provider<SleepTimerRepository> sleepTimerRepositoryProvider
+- Provider<AppSettingsRepository> appSettingsRepositoryProvider
+- Provider<MoodRepository> moodRepositoryProvider
++ MainViewModel get()
++ {static} MainViewModel_Factory create(Provider<PlayerRepository>,Provider<SleepTimerRepository>,Provider<AppSettingsRepository>,Provider<MoodRepository>)
++ {static} MainViewModel newInstance(PlayerRepository,SleepTimerRepository,AppSettingsRepository,MoodRepository)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_MainViewModel_HiltModules_BindsModule {
+}
+class com.romnan.chillax.data.model.PlayingSound {
+}
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC {
++ {static} Builder builder()
+}
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$Builder {
+- ApplicationContextModule applicationContextModule
++ Builder applicationContextModule(ApplicationContextModule)
++ ChillaxApp_HiltComponents.SingletonC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCBuilder {
+- SingletonCImpl singletonCImpl
+- SavedStateHandleHolder savedStateHandleHolder
++ ActivityRetainedCBuilder savedStateHandleHolder(SavedStateHandleHolder)
++ ChillaxApp_HiltComponents.ActivityRetainedC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCBuilder {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- Activity activity
++ ActivityCBuilder activity(Activity)
++ ChillaxApp_HiltComponents.ActivityC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$FragmentCBuilder {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ActivityCImpl activityCImpl
+- Fragment fragment
++ FragmentCBuilder fragment(Fragment)
++ ChillaxApp_HiltComponents.FragmentC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewWithFragmentCBuilder {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ActivityCImpl activityCImpl
+- FragmentCImpl fragmentCImpl
+- View view
++ ViewWithFragmentCBuilder view(View)
++ ChillaxApp_HiltComponents.ViewWithFragmentC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewCBuilder {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ActivityCImpl activityCImpl
+- View view
++ ViewCBuilder view(View)
++ ChillaxApp_HiltComponents.ViewC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCBuilder {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- SavedStateHandle savedStateHandle
+- ViewModelLifecycle viewModelLifecycle
++ ViewModelCBuilder savedStateHandle(SavedStateHandle)
++ ViewModelCBuilder viewModelLifecycle(ViewModelLifecycle)
++ ChillaxApp_HiltComponents.ViewModelC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ServiceCBuilder {
+- SingletonCImpl singletonCImpl
+- Service service
++ ServiceCBuilder service(Service)
++ ChillaxApp_HiltComponents.ServiceC build()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewWithFragmentCImpl {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ActivityCImpl activityCImpl
+- FragmentCImpl fragmentCImpl
+- ViewWithFragmentCImpl viewWithFragmentCImpl
+}
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$FragmentCImpl {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ActivityCImpl activityCImpl
+- FragmentCImpl fragmentCImpl
++ DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory()
++ ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewCImpl {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ActivityCImpl activityCImpl
+- ViewCImpl viewCImpl
+}
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCImpl {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ActivityCImpl activityCImpl
++ void injectMainActivity(MainActivity)
++ DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory()
++ Map<Class<?>,Boolean> getViewModelKeys()
++ ViewModelComponentBuilder getViewModelComponentBuilder()
++ FragmentComponentBuilder fragmentComponentBuilder()
++ ViewComponentBuilder viewComponentBuilder()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCImpl$LazyClassKeyProvider {
+~ {static} String com_romnan_chillax_presentation_composable_sounds_SoundsViewModel
+~ {static} String com_romnan_chillax_presentation_composable_moods_MoodsViewModel
+~ {static} String com_romnan_chillax_presentation_composable_settings_SettingsViewModel
+~ {static} String com_romnan_chillax_presentation_MainViewModel
+~ SoundsViewModel com_romnan_chillax_presentation_composable_sounds_SoundsViewModel2
+~ MoodsViewModel com_romnan_chillax_presentation_composable_moods_MoodsViewModel2
+~ SettingsViewModel com_romnan_chillax_presentation_composable_settings_SettingsViewModel2
+~ MainViewModel com_romnan_chillax_presentation_MainViewModel2
+}
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ViewModelCImpl viewModelCImpl
+- Provider<MainViewModel> mainViewModelProvider
+- Provider<MoodsViewModel> moodsViewModelProvider
+- Provider<SettingsViewModel> settingsViewModelProvider
+- Provider<SoundsViewModel> soundsViewModelProvider
+- void initialize(SavedStateHandle,ViewModelLifecycle)
++ Map<Class<?>,javax.inject.Provider<ViewModel>> getHiltViewModelMap()
++ Map<Class<?>,Object> getHiltViewModelAssistedMap()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl$LazyClassKeyProvider {
+~ {static} String com_romnan_chillax_presentation_composable_moods_MoodsViewModel
+~ {static} String com_romnan_chillax_presentation_composable_sounds_SoundsViewModel
+~ {static} String com_romnan_chillax_presentation_composable_settings_SettingsViewModel
+~ {static} String com_romnan_chillax_presentation_MainViewModel
+~ MoodsViewModel com_romnan_chillax_presentation_composable_moods_MoodsViewModel2
+~ SoundsViewModel com_romnan_chillax_presentation_composable_sounds_SoundsViewModel2
+~ SettingsViewModel com_romnan_chillax_presentation_composable_settings_SettingsViewModel2
+~ MainViewModel com_romnan_chillax_presentation_MainViewModel2
+}
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- ViewModelCImpl viewModelCImpl
+- int id
++ T get()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCImpl {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- Provider<ActivityRetainedLifecycle> provideActivityRetainedLifecycleProvider
+- void initialize(SavedStateHandleHolder)
++ ActivityComponentBuilder activityComponentBuilder()
++ ActivityRetainedLifecycle getActivityRetainedLifecycle()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCImpl$SwitchingProvider {
+- SingletonCImpl singletonCImpl
+- ActivityRetainedCImpl activityRetainedCImpl
+- int id
++ T get()
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ServiceCImpl {
+- SingletonCImpl singletonCImpl
+- ServiceCImpl serviceCImpl
++ void injectPlayerService(PlayerService)
+- PlayerService injectPlayerService2(PlayerService)
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$SingletonCImpl {
+- ApplicationContextModule applicationContextModule
+- SingletonCImpl singletonCImpl
+- Provider<NotificationHelper> provideNotificationHelperProvider
+- Provider<CoroutineScope> provideApplicationScopeProvider
+- Provider<SleepTimerRepository> provideSleepTimerRepositoryProvider
+- Provider<TimeSource> provideTimeSourceProvider
+- Provider<CountDownTimer> provideCountDownTimerProvider
+- Provider<AppDataSource> provideAppDataSourceProvider
+- Provider<MoodRepository> provideMoodRepositoryProvider
+- Provider<PlayerRepository> providePlayerRepositoryProvider
+- Provider<AppSettingsRepository> provideAppSettingsRepositoryProvider
+- void initialize(ApplicationContextModule)
++ void injectChillaxApp(ChillaxApp)
++ void injectBedtimeBroadcastReceiver(BedtimeBroadcastReceiver)
++ Set<Boolean> getDisableFragmentGetContextFix()
++ ActivityRetainedComponentBuilder retainedComponentBuilder()
++ ServiceComponentBuilder serviceComponentBuilder()
+- BedtimeBroadcastReceiver injectBedtimeBroadcastReceiver2(BedtimeBroadcastReceiver)
+}
+
+
+class com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider {
+- SingletonCImpl singletonCImpl
+- int id
++ T get()
+}
+
+
+abstract class com.romnan.chillax.presentation.Hilt_MainActivity {
+- SavedStateHandleHolder savedStateHandleHolder
+- ActivityComponentManager componentManager
+- Object componentManagerLock
+- boolean injected
+- void _initHiltInternal()
+- void initSavedStateHandleHolder()
+# void onCreate(Bundle)
+# void onDestroy()
++ Object generatedComponent()
+# ActivityComponentManager createComponentManager()
++ ActivityComponentManager componentManager()
+# void inject()
++ ViewModelProvider.Factory getDefaultViewModelProviderFactory()
+}
+
+
+class com.romnan.chillax.di.AppModule_ProvidePlayerRepositoryFactory {
+- Provider<Context> appContextProvider
+- Provider<CoroutineScope> appScopeProvider
+- Provider<SleepTimerRepository> sleepTimerRepositoryProvider
+- Provider<CountDownTimer> countDownTimerProvider
+- Provider<AppDataSource> appDataSourceProvider
+- Provider<MoodRepository> moodRepositoryProvider
++ PlayerRepository get()
++ {static} AppModule_ProvidePlayerRepositoryFactory create(Provider<Context>,Provider<CoroutineScope>,Provider<SleepTimerRepository>,Provider<CountDownTimer>,Provider<AppDataSource>,Provider<MoodRepository>)
++ {static} PlayerRepository providePlayerRepository(Context,CoroutineScope,SleepTimerRepository,CountDownTimer,AppDataSource,MoodRepository)
+}
+
+
+class com.romnan.chillax.ExampleInstrumentedTest {
++ void useAppContext()
+}
+
+interface com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver_GeneratedInjector {
+~ void injectBedtimeBroadcastReceiver(BedtimeBroadcastReceiver)
+}
+
+class com.romnan.chillax.presentation.composable.destinations.MoodsScreenDestination {
++ String baseRoute
++ String route
++ Direction invoke()
++ void Content()
+}
+
+
+class com.romnan.chillax.di.AppModule_ProvideCountDownTimerFactory {
+- Provider<CoroutineScope> appScopeProvider
+- Provider<TimeSource> timeSourceProvider
++ CountDownTimer get()
++ {static} AppModule_ProvideCountDownTimerFactory create(Provider<CoroutineScope>,Provider<TimeSource>)
++ {static} CountDownTimer provideCountDownTimer(CoroutineScope,TimeSource)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_MainViewModel_HiltModules_KeyModule {
+}
+class com.romnan.chillax.data.model.SleepTimerSerializable {
+}
+class com.romnan.chillax.presentation.notification.NotificationHelperImpl {
+}
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_settings_SettingsViewModel_HiltModules_BindsModule {
+}
+interface com.romnan.chillax.domain.notification.NotificationHelper {
++ NotificationCompat.Builder getBasePlayerServiceNotification()
++ void updatePlayerServiceNotification(PlayerPresentation)
++ void removePlayerServiceNotification()
++ void showBedtimeReminderNotification()
+}
+
+class com.romnan.chillax.presentation.util.UIEvent$ShowToast {
+}
+class com.romnan.chillax.presentation.util.UIEvent$ShowSnackbar {
+}
+class com.romnan.chillax.presentation.util.UIEvent$ClearFocus {
+}
+class com.romnan.chillax.presentation.util.UIEvent {
+}
+enum com.romnan.chillax.presentation.composable.moods.model.MoodType {
+}
+class com.romnan.chillax.presentation.model.CategoryPresentation {
+}
+interface com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver_GeneratedInjector {
+~ void injectBedtimeBroadcastReceiver(BedtimeBroadcastReceiver)
+}
+
+class com.romnan.chillax.data.util.CountDownTimer {
+-  millisUntilFinished
+- Job? timerJob
++ void startTimer(void,Long,void,Long,void,suspend (millisUntilFinished: Long) -> Unit,void,() -> Unit,void)
++ void cancelTimer()
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_composable_settings_SettingsViewModel_HiltModules_BindsModule {
+}
+class com.romnan.chillax.data.util.CountDownTimer_Factory {
+- Provider<CoroutineScope> appScopeProvider
+- Provider<TimeSource> timeSourceProvider
++ CountDownTimer get()
++ {static} CountDownTimer_Factory create(Provider<CoroutineScope>,Provider<TimeSource>)
++ {static} CountDownTimer newInstance(CoroutineScope,TimeSource)
+}
+
+
+class hilt_aggregated_deps._com_romnan_chillax_application_ChillaxApp_GeneratedInjector {
+}
+class com.romnan.chillax.di.AppModule_ProvidePlayerRepositoryFactory {
+- Provider<Context> appContextProvider
+- Provider<CoroutineScope> appScopeProvider
+- Provider<SleepTimerRepository> sleepTimerRepositoryProvider
+- Provider<CountDownTimer> countDownTimerProvider
+- Provider<AppDataSource> appDataSourceProvider
+- Provider<MoodRepository> moodRepositoryProvider
++ PlayerRepository get()
++ {static} AppModule_ProvidePlayerRepositoryFactory create(Provider<Context>,Provider<CoroutineScope>,Provider<SleepTimerRepository>,Provider<CountDownTimer>,Provider<AppDataSource>,Provider<MoodRepository>)
++ {static} PlayerRepository providePlayerRepository(Context,CoroutineScope,SleepTimerRepository,CountDownTimer,AppDataSource,MoodRepository)
+}
+
+
+class com.romnan.chillax.data.model.AppSettingsSerializable {
+}
+class com.romnan.chillax.di.AppModule_ProvideAppSettingsRepositoryFactory {
+- Provider<Context> appContextProvider
++ AppSettingsRepository get()
++ {static} AppModule_ProvideAppSettingsRepositoryFactory create(Provider<Context>)
++ {static} AppSettingsRepository provideAppSettingsRepository(Context)
+}
+
+
+class com.romnan.chillax.di.AppModule_ProvideMoodRepositoryFactory {
+- Provider<Context> appContextProvider
+- Provider<CoroutineScope> appScopeProvider
+- Provider<AppDataSource> appDataSourceProvider
++ MoodRepository get()
++ {static} AppModule_ProvideMoodRepositoryFactory create(Provider<Context>,Provider<CoroutineScope>,Provider<AppDataSource>)
++ {static} MoodRepository provideMoodRepository(Context,CoroutineScope,AppDataSource)
+}
+
+
+class com.romnan.chillax.data.repository.MoodRepositoryImpl$Companion {
+-  DIR_NAME_MOOD_CUSTOM_IMAGES
+-  DIR_NAME_SAVED_MOOD_CUSTOM_IMAGES
+-  FILE_NAME_CUSTOM_MOODS_DATA_STORE
+-  customMoodsDataStore
+}
+
+class com.romnan.chillax.data.repository.MoodRepositoryImpl {
+-  customImagesDir
+-  savedMoodCustomImagesDir
++ Flow<List<Mood>> moods
++ Flow<Set<String>> moodPresetImageUris
+-  _moodCustomImageUris
++ Flow<Set<String>> moodCustomImageUris
++ void null()
++ void null()
++ void null()
++ Mood? saveCustomMood(void,String,void,String,void,Map<String, Float>,void)
++ Unit deleteCustomMood(void,String,void)
++ Uri saveMoodCustomImage(void,Uri,void)
++ Unit deleteMoodCustomImage(void,String,void)
+- void refreshMoodCustomImageUris()
+}
+
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(SettingsViewModel)
+}
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+class hilt_aggregated_deps._com_romnan_chillax_presentation_MainViewModel_HiltModules_BindsModule {
+}
+class com.romnan.chillax.presentation.service.PlayerService_MembersInjector {
+- Provider<PlayerRepository> playerRepositoryProvider
+- Provider<NotificationHelper> notificationHelperProvider
++ {static} MembersInjector<PlayerService> create(Provider<PlayerRepository>,Provider<NotificationHelper>)
++ void injectMembers(PlayerService)
++ {static} void injectPlayerRepository(PlayerService,PlayerRepository)
++ {static} void injectNotificationHelper(PlayerService,NotificationHelper)
+}
+
+
+class com.romnan.chillax.data.repository.AppSettingsRepositoryImpl$Companion {
+-  FILE_NAME
+-  appSettingsDataStore
+}
+
+class com.romnan.chillax.data.repository.AppSettingsRepositoryImpl {
+- DataStore<AppSettingsSerializable> appSettingsDataStore
++ Flow<AppSettings> appSettings
++ void null()
++ void setThemeMode(ThemeMode)
++ void setBedtime(Long?)
+- void setBedtimeAlarm(Long)
+- void cancelBedtimeAlarm()
+}
+
+
+class com.romnan.chillax.presentation.MainViewModel_HiltModules {
+}
+abstract class com.romnan.chillax.presentation.MainViewModel_HiltModules$BindsModule {
++ {abstract}ViewModel binds(MainViewModel)
+}
+
+class com.romnan.chillax.presentation.MainViewModel_HiltModules$KeyModule {
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_Factory {
+- Provider<PlayerRepository> playerRepositoryProvider
++ SoundsViewModel get()
++ {static} SoundsViewModel_Factory create(Provider<PlayerRepository>)
++ {static} SoundsViewModel newInstance(PlayerRepository)
+}
+
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} SettingsViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} SettingsViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+class hilt_aggregated_deps._com_romnan_chillax_di_AppModule {
+}
+class com.romnan.chillax.data.util.CountDownTimer_Factory {
+- Provider<CoroutineScope> appScopeProvider
+- Provider<TimeSource> timeSourceProvider
++ CountDownTimer get()
++ {static} CountDownTimer_Factory create(Provider<CoroutineScope>,Provider<TimeSource>)
++ {static} CountDownTimer newInstance(CoroutineScope,TimeSource)
+}
+
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_Factory {
+- Provider<PlayerRepository> playerRepositoryProvider
++ SoundsViewModel get()
++ {static} SoundsViewModel_Factory create(Provider<PlayerRepository>)
++ {static} SoundsViewModel newInstance(PlayerRepository)
+}
+
+
+class com.romnan.chillax.presentation.composable.destinations.SoundsScreenDestination {
++ String baseRoute
++ String route
++ Direction invoke()
++ void Content()
+}
+
+
+interface com.romnan.chillax.domain.util.TimeSource {
++ Long elapsedRealTime
+}
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} SoundsViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} SoundsViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel_Factory {
+- Provider<AppSettingsRepository> appSettingsRepositoryProvider
++ SettingsViewModel get()
++ {static} SettingsViewModel_Factory create(Provider<AppSettingsRepository>)
++ {static} SettingsViewModel newInstance(AppSettingsRepository)
+}
+
+
+class com.romnan.chillax.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class hilt_aggregated_deps._com_romnan_chillax_di_AppModule {
+}
+class com.romnan.chillax.domain.model.Player {
+}
+class com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} MainViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} MainViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+class com.romnan.chillax.di.AppModule_ProvideNotificationHelperFactory {
+- Provider<Context> appContextProvider
++ NotificationHelper get()
++ {static} AppModule_ProvideNotificationHelperFactory create(Provider<Context>)
++ {static} NotificationHelper provideNotificationHelper(Context)
+}
+
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory {
++ Boolean get()
++ {static} MoodsViewModel_HiltModules_KeyModule_ProvideFactory create()
++ {static} boolean provide()
+}
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder {
+- {static} MoodsViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE
+}
+
+abstract class com.romnan.chillax.data.receiver.Hilt_BedtimeBroadcastReceiver {
+- boolean injected
+- Object injectedLock
++ void onReceive(Context,Intent)
+# void inject(Context)
+}
+
+
+
+
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideMoodRepositoryFactory
+com.romnan.chillax.domain.model.Mood +.. com.romnan.chillax.domain.model.Mood$Companion
+com.romnan.chillax.presentation.composable.NavGraphSpec <|.. com.romnan.chillax.presentation.composable.NavGraph
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.PlayerSerializer
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.SleepTimerSerializer
+dagger.MembersInjector <|.. com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver_MembersInjector
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.composable.sounds.SoundsViewModel
+androidx.activity.ComponentActivity <|-- com.romnan.chillax.presentation.MainActivity
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceCBuilderModule
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedCBuilderModule
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityCBuilderModule
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelCBuilderModule
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewCBuilderModule
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentCBuilderModule
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentCBuilderModule
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.ChillaxApp_GeneratedInjector <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.BedtimeBroadcastReceiver_GeneratedInjector <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.FragmentGetContextFixEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.HiltWrapper_ActivityRetainedComponentManager_ActivityRetainedComponentBuilderEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.ServiceComponentBuilderEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.SingletonComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$SingletonC
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC
+com.romnan.chillax.application.PlayerService_GeneratedInjector <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC
+com.romnan.chillax.application.ServiceComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC
+com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC$Builder
+com.romnan.chillax.application.ServiceComponentBuilder <|-- com.romnan.chillax.application.ChillaxApp_HiltComponents$ServiceC$Builder
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC
+com.romnan.chillax.application.ActivityRetainedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC
+com.romnan.chillax.application.ActivityComponentBuilderEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC
+com.romnan.chillax.application.HiltWrapper_ActivityRetainedComponentManager_ActivityRetainedLifecycleEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC
+com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC$Builder
+com.romnan.chillax.application.ActivityRetainedComponentBuilder <|-- com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityRetainedC$Builder
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.MainActivity_GeneratedInjector <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.ActivityComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.ActivityEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.HiltWrapper_HiltViewModelFactory_ActivityCreatorEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.FragmentComponentBuilderEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.ViewComponentBuilderEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC
+com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC$Builder
+com.romnan.chillax.application.ActivityComponentBuilder <|-- com.romnan.chillax.application.ChillaxApp_HiltComponents$ActivityC$Builder
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC
+com.romnan.chillax.application.ViewModelComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC
+com.romnan.chillax.application.ViewModelFactoriesEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC
+com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC$Builder
+com.romnan.chillax.application.ViewModelComponentBuilder <|-- com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewModelC$Builder
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC
+com.romnan.chillax.application.ViewComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC
+com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC$Builder
+com.romnan.chillax.application.ViewComponentBuilder <|-- com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewC$Builder
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC
+com.romnan.chillax.application.FragmentComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC
+com.romnan.chillax.application.FragmentEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC
+com.romnan.chillax.application.ViewWithFragmentComponentBuilderEntryPoint <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC
+com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC$Builder
+com.romnan.chillax.application.FragmentComponentBuilder <|-- com.romnan.chillax.application.ChillaxApp_HiltComponents$FragmentC$Builder
+com.romnan.chillax.application.ChillaxApp_HiltComponents +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC
+com.romnan.chillax.application.ViewWithFragmentComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC
+com.romnan.chillax.application.GeneratedComponent <|.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC
+com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC +.. com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC$Builder
+com.romnan.chillax.application.ViewWithFragmentComponentBuilder <|-- com.romnan.chillax.application.ChillaxApp_HiltComponents$ViewWithFragmentC$Builder
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com.romnan.chillax.presentation.composable.NavGraphSpec <|.. com.romnan.chillax.presentation.composable.NavGraph
+android.content.BroadcastReceiver <|-- com.romnan.chillax.data.receiver.Hilt_BedtimeBroadcastReceiver
+com.romnan.chillax.presentation.composable.destinations.DirectionDestination <|.. com.romnan.chillax.presentation.composable.destinations.SettingsScreenDestination
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory
+com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory +.. com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory$InstanceHolder
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.CustomMoodsSerializer
+com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$KeyModule
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory
+com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory +.. com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory$InstanceHolder
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.composable.moods.MoodsViewModel
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory
+com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory +.. com.romnan.chillax.di.AppModule_ProvideTimeSourceFactory$InstanceHolder
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_Factory
+com.romnan.chillax.presentation.model.SleepTimerPresentation +.. com.romnan.chillax.presentation.model.SleepTimerPresentation$Companion
+com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$KeyModule
+android.app.Service <|-- com.romnan.chillax.presentation.service.PlayerService
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$DynamicString
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$DynamicString
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$StringResource
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$StringResource
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$PluralsResource
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$PluralsResource
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$Blank
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$Blank
+com.romnan.chillax.presentation.composable.destinations.DirectionDestination <|.. com.romnan.chillax.presentation.composable.destinations.SoundsScreenDestination
+dagger.MembersInjector <|.. com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver_MembersInjector
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com.romnan.chillax.presentation.composable.destinations.DestinationSpec <|.. com.romnan.chillax.presentation.composable.destinations.TypedDestination
+com.romnan.chillax.presentation.composable.destinations.TypedDestination <|.. com.romnan.chillax.presentation.composable.destinations.DirectionDestination
+com.romnan.chillax.presentation.composable.destinations.DirectionDestinationSpec <|.. com.romnan.chillax.presentation.composable.destinations.DirectionDestination
+dagger.hilt.internal.GeneratedComponentManagerHolder <|.. com.romnan.chillax.presentation.Hilt_MainActivity
+androidx.activity.ComponentActivity <|-- com.romnan.chillax.presentation.Hilt_MainActivity
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_Factory
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideSleepTimerRepositoryFactory
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.MainViewModel
+com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$KeyModule
+android.app.Application <|-- com.romnan.chillax.application.ChillaxApp
+com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules$KeyModule
+dagger.hilt.internal.GeneratedComponentManagerHolder <|.. com.romnan.chillax.application.Hilt_ChillaxApp
+android.app.Application <|-- com.romnan.chillax.application.Hilt_ChillaxApp
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.MainViewModel_Factory
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideSleepTimerRepositoryFactory
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideCountDownTimerFactory
+com.romnan.chillax.presentation.composable.destinations.DestinationSpec <|.. com.romnan.chillax.presentation.composable.destinations.TypedDestination
+com.romnan.chillax.presentation.composable.destinations.TypedDestination <|.. com.romnan.chillax.presentation.composable.destinations.DirectionDestination
+com.romnan.chillax.presentation.composable.destinations.DirectionDestinationSpec <|.. com.romnan.chillax.presentation.composable.destinations.DirectionDestination
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com.romnan.chillax.data.repository.PlayerRepositoryImpl +.. com.romnan.chillax.data.repository.PlayerRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.PlayerRepository <|.. com.romnan.chillax.data.repository.PlayerRepositoryImpl
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideAppSettingsRepositoryFactory
+com.romnan.chillax.presentation.composable.destinations.DirectionDestination <|.. com.romnan.chillax.presentation.composable.destinations.MoodsScreenDestination
+com.romnan.chillax.presentation.model.BedtimePresentation +.. com.romnan.chillax.presentation.model.BedtimePresentation$Companion
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideAppDataSourceFactory
+com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules$KeyModule
+com.romnan.chillax.presentation.MainViewModel_HiltModules +.. com.romnan.chillax.presentation.MainViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.MainViewModel_HiltModules +.. com.romnan.chillax.presentation.MainViewModel_HiltModules$KeyModule
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.AppSettingsSerializer
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideNotificationHelperFactory
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_Factory
+com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver +.. com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver$Companion
+android.content.BroadcastReceiver <|-- com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory
+com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory +.. com.romnan.chillax.di.AppModule_ProvideApplicationScopeFactory$InstanceHolder
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideAppDataSourceFactory
+dagger.hilt.internal.GeneratedComponentManagerHolder <|.. com.romnan.chillax.presentation.service.Hilt_PlayerService
+android.app.Service <|-- com.romnan.chillax.presentation.service.Hilt_PlayerService
+dagger.hilt.internal.GeneratedComponentManagerHolder <|.. com.romnan.chillax.presentation.service.Hilt_PlayerService
+android.app.Service <|-- com.romnan.chillax.presentation.service.Hilt_PlayerService
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.composable.settings.SettingsViewModel
+dagger.MembersInjector <|.. com.romnan.chillax.presentation.service.PlayerService_MembersInjector
+com.romnan.chillax.data.repository.SleepTimerRepositoryImpl +.. com.romnan.chillax.data.repository.SleepTimerRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.SleepTimerRepository <|.. com.romnan.chillax.data.repository.SleepTimerRepositoryImpl
+com.romnan.chillax.presentation.composable.destinations.DirectionDestination <|.. com.romnan.chillax.presentation.composable.destinations.SettingsScreenDestination
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.MainViewModel_Factory
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$Builder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCBuilder
+com.romnan.chillax.application.Builder <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCBuilder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCBuilder
+com.romnan.chillax.application.Builder <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCBuilder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$FragmentCBuilder
+com.romnan.chillax.application.Builder <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$FragmentCBuilder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewWithFragmentCBuilder
+com.romnan.chillax.application.Builder <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewWithFragmentCBuilder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewCBuilder
+com.romnan.chillax.application.Builder <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewCBuilder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCBuilder
+com.romnan.chillax.application.Builder <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCBuilder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ServiceCBuilder
+com.romnan.chillax.application.Builder <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ServiceCBuilder
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewWithFragmentCImpl
+com.romnan.chillax.application.ViewWithFragmentC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewWithFragmentCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$FragmentCImpl
+com.romnan.chillax.application.FragmentC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$FragmentCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewCImpl
+com.romnan.chillax.application.ViewC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCImpl
+com.romnan.chillax.application.ActivityC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCImpl +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityCImpl$LazyClassKeyProvider
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl
+com.romnan.chillax.application.ViewModelC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl$LazyClassKeyProvider
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider
+com.romnan.chillax.application.Provider <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCImpl
+com.romnan.chillax.application.ActivityRetainedC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCImpl +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCImpl$SwitchingProvider
+com.romnan.chillax.application.Provider <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ActivityRetainedCImpl$SwitchingProvider
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ServiceCImpl
+com.romnan.chillax.application.ServiceC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$ServiceCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$SingletonCImpl
+com.romnan.chillax.application.SingletonC <|-- com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$SingletonCImpl
+com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$SingletonCImpl +.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider
+com.romnan.chillax.application.Provider <|.. com.romnan.chillax.application.DaggerChillaxApp_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider
+dagger.hilt.internal.GeneratedComponentManagerHolder <|.. com.romnan.chillax.presentation.Hilt_MainActivity
+androidx.activity.ComponentActivity <|-- com.romnan.chillax.presentation.Hilt_MainActivity
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvidePlayerRepositoryFactory
+com.romnan.chillax.presentation.composable.destinations.DirectionDestination <|.. com.romnan.chillax.presentation.composable.destinations.MoodsScreenDestination
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideCountDownTimerFactory
+com.romnan.chillax.presentation.util.UIEvent +.. com.romnan.chillax.presentation.util.UIEvent$ShowToast
+com.romnan.chillax.presentation.util.UIEvent <|-- com.romnan.chillax.presentation.util.UIEvent$ShowToast
+com.romnan.chillax.presentation.util.UIEvent +.. com.romnan.chillax.presentation.util.UIEvent$ShowSnackbar
+com.romnan.chillax.presentation.util.UIEvent <|-- com.romnan.chillax.presentation.util.UIEvent$ShowSnackbar
+com.romnan.chillax.presentation.util.UIEvent +.. com.romnan.chillax.presentation.util.UIEvent$ClearFocus
+com.romnan.chillax.presentation.util.UIEvent <|-- com.romnan.chillax.presentation.util.UIEvent$ClearFocus
+dagger.internal.Factory <|.. com.romnan.chillax.data.util.CountDownTimer_Factory
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvidePlayerRepositoryFactory
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideAppSettingsRepositoryFactory
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideMoodRepositoryFactory
+com.romnan.chillax.data.repository.MoodRepositoryImpl +.. com.romnan.chillax.data.repository.MoodRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.MoodRepository <|.. com.romnan.chillax.data.repository.MoodRepositoryImpl
+com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules +.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules$KeyModule
+dagger.MembersInjector <|.. com.romnan.chillax.presentation.service.PlayerService_MembersInjector
+com.romnan.chillax.data.repository.AppSettingsRepositoryImpl +.. com.romnan.chillax.data.repository.AppSettingsRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.AppSettingsRepository <|.. com.romnan.chillax.data.repository.AppSettingsRepositoryImpl
+com.romnan.chillax.presentation.MainViewModel_HiltModules +.. com.romnan.chillax.presentation.MainViewModel_HiltModules$BindsModule
+com.romnan.chillax.presentation.MainViewModel_HiltModules +.. com.romnan.chillax.presentation.MainViewModel_HiltModules$KeyModule
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_Factory
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+dagger.internal.Factory <|.. com.romnan.chillax.data.util.CountDownTimer_Factory
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_Factory
+com.romnan.chillax.presentation.composable.destinations.DirectionDestination <|.. com.romnan.chillax.presentation.composable.destinations.SoundsScreenDestination
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.composable.sounds.SoundsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.settings.SettingsViewModel_Factory
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.MainViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+dagger.internal.Factory <|.. com.romnan.chillax.di.AppModule_ProvideNotificationHelperFactory
+dagger.internal.Factory <|.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory
+com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory +.. com.romnan.chillax.presentation.composable.moods.MoodsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+android.content.BroadcastReceiver <|-- com.romnan.chillax.data.receiver.Hilt_BedtimeBroadcastReceiver
+@enduml

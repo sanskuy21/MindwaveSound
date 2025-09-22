@@ -1,0 +1,511 @@
+@startuml
+class com.romnan.chillax.presentation.constant.TimeConstants {
++  TWELVE_HOUR_FORMAT
++ Calendar DEFAULT_BED_TIME
+}
+
+interface com.romnan.chillax.domain.repository.SleepTimerRepository {
++ Flow<SleepTimer> sleepTimer
++ void updateTimerRunning(void,Boolean,void)
++ void updateTimeLeftInMillis(void,Long,void)
+}
+
+
+class com.romnan.chillax.domain.model.Sound {
+}
+interface com.romnan.chillax.domain.repository.MoodRepository {
++ Flow<List<Mood>> moods
++ Flow<Set<String>> moodPresetImageUris
++ Flow<Set<String>> moodCustomImageUris
++ Mood? saveCustomMood(void,String,void,String,void,Map<String, Float>,void)
++ void deleteCustomMood(String)
++ Uri saveMoodCustomImage(Uri)
++ void deleteMoodCustomImage(String)
+}
+
+
+class com.romnan.chillax.domain.model.AppSettings {
+}
+class com.romnan.chillax.presentation.notification.NotificationHelperImpl {
+}
+class com.romnan.chillax.data.model.SleepTimerSerializable {
+}
+class com.romnan.chillax.domain.model.Mood$Companion {
++  CUSTOM_MOOD_ID_PREFIX
+}
+
+class com.romnan.chillax.domain.model.Mood {
++ Boolean isCustom
+}
+
+interface com.romnan.chillax.domain.notification.NotificationHelper {
++ NotificationCompat.Builder getBasePlayerServiceNotification()
++ void updatePlayerServiceNotification(PlayerPresentation)
++ void removePlayerServiceNotification()
++ void showBedtimeReminderNotification()
+}
+
+class com.romnan.chillax.presentation.model.SleepTimerPresentation$Companion {
++  defaultValue
+}
+
+class com.romnan.chillax.presentation.model.SleepTimerPresentation {
++ Boolean isEnabled
++ UIText readableTimeLeft
++ void null()
+}
+
+
+class com.romnan.chillax.domain.model.SleepTimer {
+}
+class com.romnan.chillax.presentation.composable.theme.Spacing {
+}
+class com.romnan.chillax.presentation.model.BedtimePresentation$Companion {
++  defaultValue
+}
+
+class com.romnan.chillax.presentation.model.BedtimePresentation {
+}
+class com.romnan.chillax.presentation.util.UIEvent$ShowToast {
+}
+class com.romnan.chillax.presentation.util.UIEvent$ShowSnackbar {
+}
+class com.romnan.chillax.presentation.util.UIEvent$ClearFocus {
+}
+class com.romnan.chillax.presentation.util.UIEvent {
+}
+enum com.romnan.chillax.presentation.composable.moods.model.MoodType {
+}
+class com.romnan.chillax.presentation.model.SoundPresentation {
+}
+interface com.romnan.chillax.domain.repository.AppSettingsRepository {
++ Flow<AppSettings> appSettings
++ void setThemeMode(ThemeMode)
++ void setBedtime(Long?)
+}
+
+
+interface com.romnan.chillax.domain.repository.PlayerRepository {
++ Flow<List<Sound>> sounds
++ Flow<List<Category>> categories
++ Flow<Player> player
++ void playOrPausePlayer()
++ void addOrRemoveSound(void,String,void)
++ void removeAllSounds()
++ void changeSoundVolume(void,String,void,Float,void)
++ void addMood(void,Mood,void,Boolean,void)
++ void setSleepTimer(void,Int,void,Int,void)
++ void stopSleepTimer()
++ void pausePlayer()
+}
+
+
+class com.romnan.chillax.presentation.service.PlayerService {
+-  serviceScope
++ PlayerRepository playerRepository
++ NotificationHelper notificationHelper
+-  audioResIdToExoPlayer
+- Job? playerServiceJob
++ Int onStartCommand(Intent?,Int,Int)
++ void onDestroy()
+- void stopAllPlayers()
+- void pauseAllPlayers()
+- void playAllPlayers()
+- void addResPlayer(void)
++ void null()
+- void removeExoPlayer(Int)
++ IBinder? onBind(Intent?)
+}
+
+
+class com.romnan.chillax.data.serializer.PlayerSerializer {
++ PlayerSerializable defaultValue
++ PlayerSerializable readFrom(InputStream)
++ void writeTo(PlayerSerializable,OutputStream)
+}
+
+
+class com.romnan.chillax.domain.model.UIText$DynamicString {
+}
+class com.romnan.chillax.domain.model.UIText$StringResource {
++ Array<out Any> args
++ String toString()
+}
+
+
+class com.romnan.chillax.domain.model.UIText$PluralsResource {
++ Array<out Any> args
++ String toString()
+}
+
+
+class com.romnan.chillax.domain.model.UIText$Blank {
+}
+class com.romnan.chillax.domain.model.UIText {
+}
+class com.romnan.chillax.data.serializer.SleepTimerSerializer {
++ SleepTimerSerializable defaultValue
++ SleepTimerSerializable readFrom(InputStream)
++ void writeTo(SleepTimerSerializable,OutputStream)
+}
+
+
+class com.romnan.chillax.presentation.model.CategoryPresentation {
+}
+class com.romnan.chillax.data.model.PlayerSerializable {
+}
+class com.romnan.chillax.data.util.CountDownTimer {
+-  millisUntilFinished
+- Job? timerJob
++ void startTimer(void,Long,void,Long,void,suspend (millisUntilFinished: Long) -> Unit,void,() -> Unit,void)
++ void cancelTimer()
+}
+
+
+class com.romnan.chillax.presentation.composable.sounds.SoundsViewModel {
++ StateFlow<List<CategoryPresentation>> categories
+- Job? onClickSoundJob
++ void null()
++ void onClickSound(String)
+}
+
+
+class com.romnan.chillax.data.serializer.AppSettingsSerializer {
++ AppSettingsSerializable defaultValue
++ AppSettingsSerializable readFrom(InputStream)
++ void writeTo(AppSettingsSerializable,OutputStream)
+}
+
+
+class com.romnan.chillax.data.model.AppSettingsSerializable {
+}
+class com.romnan.chillax.data.repository.MoodRepositoryImpl$Companion {
+-  DIR_NAME_MOOD_CUSTOM_IMAGES
+-  DIR_NAME_SAVED_MOOD_CUSTOM_IMAGES
+-  FILE_NAME_CUSTOM_MOODS_DATA_STORE
+-  customMoodsDataStore
+}
+
+class com.romnan.chillax.data.repository.MoodRepositoryImpl {
+-  customImagesDir
+-  savedMoodCustomImagesDir
++ Flow<List<Mood>> moods
++ Flow<Set<String>> moodPresetImageUris
+-  _moodCustomImageUris
++ Flow<Set<String>> moodCustomImageUris
++ void null()
++ void null()
++ void null()
++ Mood? saveCustomMood(void,String,void,String,void,Map<String, Float>,void)
++ Unit deleteCustomMood(void,String,void)
++ Uri saveMoodCustomImage(void,Uri,void)
++ Unit deleteMoodCustomImage(void,String,void)
+- void refreshMoodCustomImageUris()
+}
+
+
+class com.romnan.chillax.presentation.MainActivity {
+- MainViewModel viewModel
+- MoodsViewModel moodsViewModel
+- SoundsViewModel soundsViewModel
+- SettingsViewModel settingsViewModel
++ void onCreate(Bundle?)
+}
+
+
+class com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver$Companion {
+-  PENDING_INTENT_REQUEST_CODE
++ PendingIntent getPendingIntent(Context)
+}
+
+
+class com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver {
++ NotificationHelper notificationHelper
++ void onReceive(Context?,Intent?)
+}
+
+
+class com.romnan.chillax.data.model.CustomMoodSerializable {
+}
+class com.romnan.chillax.presentation.SaveMoodDialogState {
+}
+class com.romnan.chillax.presentation.MainViewModel {
+-  _uiEvent
++  uiEvent
+-  showSaveMoodDialog
+-  moodPresetImageUris
+-  moodCustomImageUris
+-  moodCustomImageUriToDelete
++ StateFlow<SaveMoodDialogState> saveMoodDialogState
++ StateFlow<ThemeMode?> themeMode
++ StateFlow<PlayerPresentation> player
+-  _isSleepTimerPickerDialogVisible
++ StateFlow<SleepTimerPresentation> sleepTimer
+- Job? onPlayPauseClickJob
+- Job? onStopClickJob
+- Job? onSoundVolumeChangeJob
+- Job? onTimerClickJob
+- Job? onSetSleepTimerClickJob
+- Job? onConfirmSaveMoodClickJob
+- Job? onClickConfirmDeleteMoodImageJob
++ void null()
++ void null()
++ void null()
++ void onClickPlayPause()
++ void onClickStop()
++ void onChangeSoundVolume(void,String,void,Float,void)
++ void onClickTimer()
++ void onDismissSleepTimerPickerDialog()
++ void onClickSetSleepTimer(Int,Int)
++ void onClickSaveMood()
++ void onClickConfirmSaveMood(void,String,void,String?,void)
++ void onDismissSaveMoodDialog()
++ Uri onPickNewMoodCustomImage(Uri)
++ void onClickRemoveCustomImage(String)
++ void onClickConfirmDeleteMoodImage(String)
++ void onDismissDeleteMoodImageDialog()
+}
+
+
+class com.romnan.chillax.domain.model.Category {
+}
+class com.romnan.chillax.data.repository.AppSettingsRepositoryImpl$Companion {
+-  FILE_NAME
+-  appSettingsDataStore
+}
+
+class com.romnan.chillax.data.repository.AppSettingsRepositoryImpl {
+- DataStore<AppSettingsSerializable> appSettingsDataStore
++ Flow<AppSettings> appSettings
++ void null()
++ void setThemeMode(ThemeMode)
++ void setBedtime(Long?)
+- void setBedtimeAlarm(Long)
+- void cancelBedtimeAlarm()
+}
+
+
+enum com.romnan.chillax.domain.model.ThemeMode {
+}
+class com.romnan.chillax.data.source.AppDataSource {
++ List<Sound> sounds
++ List<Mood> presetMoods
++ List<Category> categories
++ Set<String> moodImageUris
++ void null()
+}
+
+
+enum com.romnan.chillax.data.source.MoodData {
++ String id
+}
+
+enum com.romnan.chillax.data.source.CategoryData {
++ String id
+}
+
+enum com.romnan.chillax.data.source.SoundData {
++ String id
+}
+
+class com.romnan.chillax.application.ChillaxApp {
++ void onCreate()
+}
+
+class com.romnan.chillax.presentation.constant.IntentConstants {
++  TYPE_PLAIN_TEXT
++  TYPE_EMAIL
+}
+
+class com.romnan.chillax.presentation.composable.settings.SettingsViewModel {
+- MutableStateFlow<Boolean> _isThemeChooserVisible
++ StateFlow<Boolean> isThemeChooserVisible
+- MutableStateFlow<Boolean> _isAppInstructionsVisible
++ StateFlow<Boolean> isAppInstructionsVisible
+-  _uiEvent
++  uiEvent
++ StateFlow<ThemeMode> themeMode
++ StateFlow<BedtimePresentation> bedtime
+-  _visiblePermissionDialogQueue
++ StateFlow<List<String>> visiblePermissionDialogQueue
+- Job? onThemeModeChangeJob
+- Job? onBedtimePickedJob
+- Job? onTurnOffBedtimeJob
+- Job? showThemeChooserJob
+- Job? hideThemeChooserJob
+- Job? showAppInstructionsJob
+- Job? hideAppInstructionsJob
+- Job? onClickAppVersionJob
++ void null()
++ void onThemeModeChange(ThemeMode)
++ void onBedtimePicked(Int,Int)
++ void onTurnOffBedtime()
++ void showThemeChooser()
++ void hideThemeChooser()
++ void showAppInstructions()
++ void hideAppInstructions()
++ void onClickAppVersion()
++ void onPermissionResults(String,Boolean)
++ void onDismissPermissionDialog()
+}
+
+
+enum com.romnan.chillax.presentation.model.BottomBarDestination {
+}
+class com.romnan.chillax.data.repository.SleepTimerRepositoryImpl$Companion {
+-  FILE_NAME
+-  sleepTimerDataStore
+}
+
+class com.romnan.chillax.data.repository.SleepTimerRepositoryImpl {
+- DataStore<SleepTimerSerializable> sleepTimerDataStore
++ Flow<SleepTimer> sleepTimer
++ void null()
++ void updateTimerRunning(void,Boolean,void)
++ void updateTimeLeftInMillis(void,Long,void)
+}
+
+
+interface com.romnan.chillax.domain.util.TimeSource {
++ Long elapsedRealTime
+}
+
+class com.romnan.chillax.domain.constant.PlayerConstants {
++  MAX_SOUNDS
++  DEFAULT_SOUND_VOLUME
+}
+
+enum com.romnan.chillax.domain.model.PlayerPhase {
+}
+class com.romnan.chillax.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class com.romnan.chillax.data.model.PlayingSound {
+}
+class com.romnan.chillax.domain.model.Player {
+}
+class com.romnan.chillax.data.serializer.CustomMoodsSerializer {
++ CustomMoodList defaultValue
++ CustomMoodList readFrom(void,InputStream,void)
++ void writeTo(void,CustomMoodList,void,OutputStream,void)
+}
+
+
+class com.romnan.chillax.presentation.model.PlayerPresentation {
++ UIText contentTitle
++ UIText soundsTitle
++ void null()
++ void null()
+}
+
+
+class com.romnan.chillax.di.AppModule {
++ CoroutineScope provideApplicationScope()
++ void provideAppDataSource(void)
++ void providePlayerRepository(void)
++ void provideAppSettingsRepository(void)
++ void provideMoodRepository(void)
++ void provideNotificationHelper(void)
++ void provideSleepTimerRepository(void)
++ void provideCountDownTimer(void)
++ TimeSource provideTimeSource()
+}
+
+class com.romnan.chillax.di.ApplicationScope {
+}
+class com.romnan.chillax.data.repository.PlayerRepositoryImpl$Companion {
+-  FILE_NAME_PLAYER_DATA_STORE
+-  playerDataStore
+}
+
+class com.romnan.chillax.data.repository.PlayerRepositoryImpl {
+-  isPlaying
++ Flow<List<Sound>> sounds
++ Flow<List<Category>> categories
++ Flow<Player> player
++ void null()
+- void startSleepTimer()
+- void pauseSleepTimer()
++ void stopSleepTimer()
++ void pausePlayer()
++ void playOrPausePlayer()
++ void addOrRemoveSound(void,String,void)
++ void setSleepTimer(void,Int,void,Int,void)
++ void removeAllSounds()
++ void changeSoundVolume(void,String,void,Float,void)
++ void addMood(void,Mood,void,Boolean,void)
+}
+
+
+class com.romnan.chillax.presentation.composable.moods.MoodsViewModel {
+-  selectedMoodType
+-  player
+-  moods
+-  customMoodToDelete
+-  moodTypes
++ StateFlow<MoodsState> state
+- Job? onClickConfirmDeleteMoodJob
+- Job? onClickPlayOrPauseJob
++ void null()
++ void null()
++ void onClickDeleteMood(Mood)
++ void onDismissDeleteMoodDialog()
++ void onClickConfirmDeleteMood(Mood)
++ void onClickPlayOrPause(Mood)
++ void onSelectMoodType(MoodType)
+}
+
+
+class com.romnan.chillax.data.model.CustomMoodList {
+}
+class com.romnan.chillax.presentation.composable.moods.MoodsState {
+}
+class com.romnan.chillax.presentation.notification.NotificationConstants {
++  PLAYER_SERVICE_CHANNEL_ID
++  PLAYER_SERVICE_NOTIFICATION_ID
++  BEDTIME_REMINDER_CHANNEL_ID
++  BEDTIME_NOTIFICATION_ID
+}
+
+
+
+com.romnan.chillax.domain.model.Mood +.. com.romnan.chillax.domain.model.Mood$Companion
+com.romnan.chillax.presentation.model.SleepTimerPresentation +.. com.romnan.chillax.presentation.model.SleepTimerPresentation$Companion
+com.romnan.chillax.presentation.model.BedtimePresentation +.. com.romnan.chillax.presentation.model.BedtimePresentation$Companion
+com.romnan.chillax.presentation.util.UIEvent +.. com.romnan.chillax.presentation.util.UIEvent$ShowToast
+com.romnan.chillax.presentation.util.UIEvent <|-- com.romnan.chillax.presentation.util.UIEvent$ShowToast
+com.romnan.chillax.presentation.util.UIEvent +.. com.romnan.chillax.presentation.util.UIEvent$ShowSnackbar
+com.romnan.chillax.presentation.util.UIEvent <|-- com.romnan.chillax.presentation.util.UIEvent$ShowSnackbar
+com.romnan.chillax.presentation.util.UIEvent +.. com.romnan.chillax.presentation.util.UIEvent$ClearFocus
+com.romnan.chillax.presentation.util.UIEvent <|-- com.romnan.chillax.presentation.util.UIEvent$ClearFocus
+android.app.Service <|-- com.romnan.chillax.presentation.service.PlayerService
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.PlayerSerializer
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$DynamicString
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$DynamicString
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$StringResource
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$StringResource
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$PluralsResource
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$PluralsResource
+com.romnan.chillax.domain.model.UIText +.. com.romnan.chillax.domain.model.UIText$Blank
+com.romnan.chillax.domain.model.UIText <|-- com.romnan.chillax.domain.model.UIText$Blank
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.SleepTimerSerializer
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.composable.sounds.SoundsViewModel
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.AppSettingsSerializer
+com.romnan.chillax.data.repository.MoodRepositoryImpl +.. com.romnan.chillax.data.repository.MoodRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.MoodRepository <|.. com.romnan.chillax.data.repository.MoodRepositoryImpl
+androidx.activity.ComponentActivity <|-- com.romnan.chillax.presentation.MainActivity
+com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver +.. com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver$Companion
+android.content.BroadcastReceiver <|-- com.romnan.chillax.data.receiver.BedtimeBroadcastReceiver
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.MainViewModel
+com.romnan.chillax.data.repository.AppSettingsRepositoryImpl +.. com.romnan.chillax.data.repository.AppSettingsRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.AppSettingsRepository <|.. com.romnan.chillax.data.repository.AppSettingsRepositoryImpl
+android.app.Application <|-- com.romnan.chillax.application.ChillaxApp
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.composable.settings.SettingsViewModel
+com.romnan.chillax.data.repository.SleepTimerRepositoryImpl +.. com.romnan.chillax.data.repository.SleepTimerRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.SleepTimerRepository <|.. com.romnan.chillax.data.repository.SleepTimerRepositoryImpl
+androidx.datastore.core.Serializer <|.. com.romnan.chillax.data.serializer.CustomMoodsSerializer
+com.romnan.chillax.data.repository.PlayerRepositoryImpl +.. com.romnan.chillax.data.repository.PlayerRepositoryImpl$Companion
+com.romnan.chillax.domain.repository.PlayerRepository <|.. com.romnan.chillax.data.repository.PlayerRepositoryImpl
+androidx.lifecycle.ViewModel <|-- com.romnan.chillax.presentation.composable.moods.MoodsViewModel
+@enduml
